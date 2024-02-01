@@ -1,6 +1,5 @@
 package com.example.currency;
 
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -18,21 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         amountEditText = findViewById(R.id.amount);
         RadioButton c1RadioButton = findViewById(R.id.c1);
         RadioButton c2RadioButton = findViewById(R.id.c2);
         resultTextView = findViewById(R.id.result);
 
-
         c1RadioButton.setOnClickListener(v -> calculateAndDisplayResult(true));
-
         c2RadioButton.setOnClickListener(v -> calculateAndDisplayResult(false));
     }
 
     @SuppressLint("SetTextI18n")
     private void calculateAndDisplayResult(boolean isC1Selected) {
-
         String amountStr = amountEditText.getText().toString();
 
         if (!amountStr.isEmpty()) {
