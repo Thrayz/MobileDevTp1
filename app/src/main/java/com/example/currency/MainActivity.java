@@ -33,17 +33,32 @@ public class MainActivity extends AppCompatActivity {
     private void convert() {
         String amountStr = amountEditText.getText().toString();
 
-        if (!amountStr.isEmpty()) {
+        if (!amountStr.isEmpty() && isNumeric(amountStr)) {
             double amount = Double.parseDouble(amountStr);
-            double result;
+            double result = 0;
             if (c1RadioButton.isChecked()) {
                 result = amount * 3;
-            } else {
+                resultTextView.setText(String.valueOf(result));
+            } else if (c2RadioButton.isChecked()) {
                 result = amount / 3;
+                resultTextView.setText(String.valueOf(result));
             }
-            resultTextView.setText(String.valueOf(result));
-        } else {
-            resultTextView.setText("Enter a valid amount");
+            else{
+                resultTextView.setText("Please choose an operation");
+            }
+
+        }
+        else {
+            resultTextView.setText("Invalid");
+        }
+    }
+
+    public static boolean isNumeric(String str){
+        try {
+            Double.parseDouble(str);
+            return true;
+        }catch(NumberFormatException e){
+            return false;
         }
     }
 }
